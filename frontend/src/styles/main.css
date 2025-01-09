@@ -1,74 +1,164 @@
-/* This file contains the CSS styles for the application, including styles for the sidebar, tabs, and main content area. */
-
+/* Root variables for consistent styling */
 :root {
-    --sidebar-background: rgba(240,243,248,255);     /* Main sidebar color */
-    --sidebar-hover: rgba(230,233,238,255); /* Hover color  rgba(0, 0, 255, 0.8)*/
-    --sidebar-startposition: 75px; /* Starting position of the sidebar */  
+    --sidebar-width: 250px; /* Define sidebar width as a variable */
+    --sidebar-background: rgba(240,243,248,255); /* Main sidebar color */
+    --sidebar-hover: rgba(230,233,238,255); /* Hover color */
+    --sidebar-startposition: 75px; /* Starting position of the sidebar */
     --main-content-background: rgba(240,243,248,255); /* Main content background color */
-    --sidebar-tab-text-color: #333333;                      /* Tab text color */
+    --sidebar-tab-text-color: #333333; /* Tab text color */
 }
-
 
 
 /* ///////////////////////////////////////////////////////////////////////////////////////////////////// */ 
 
+/* Global styles */
 body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
 }
 
+/* Sidebar styles */
 #sidebar {
-    width: 250px;
-    background-color: var(--sidebar-background);
-    color: white;
-    height: 150vh;
-    position: fixed;
+    width: var(--sidebar-width); /* What it does: Sets the sidebar width using the defined variable */
+    background-color: var(--sidebar-background); /* What it does: Sets the sidebar background color using the defined variable */
+    color: white; /* What it does: Sets the text color inside the sidebar to white */
+    height: 150vh; /* What it does: Sets the height of the sidebar to 150% of the viewport height */
+    position: fixed; /* What it does: Fixes the sidebar position so it stays in place while scrolling */
+    /* What it relies on: The --sidebar-width and --sidebar-background variables defined in :root */
 }
 
 #sidebar h2 {
-    text-align: center;
-    padding: 20px 0;
+    text-align: center; /* What it does: Centers the text inside the h2 element */
+    padding: 20px 0; /* What it does: Adds padding of 20px to the top and bottom of the h2 element */
 }
 
+/* Sidebar list styles */
 #sidebar ul {
-    list-style-type: none;
-    padding: 0;
-    margin-top: var(--sidebar-startposition);  /* Move tabs down */
+    list-style-type: none; /* What it does: Removes the default list styling */
+    padding: 0; /* What it does: Removes the default padding */
+    margin-top: var(--sidebar-startposition); /* What it does: Adds a top margin to move the list down */
+    /* What it relies on: The --sidebar-startposition variable defined in :root */
 }
 
 #sidebar ul li {
-    padding: 15px;
-    text-align: center;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    color: var(--sidebar-tab-text-color);
+    padding: 15px; /* What it does: Adds padding inside each list item */
+    text-align: center; /* What it does: Centers the text inside each list item */
+    cursor: pointer; /* What it does: Changes the cursor to a pointer when hovering over a list item */
+    transition: background-color 0.3s ease; /* What it does: Adds a smooth transition effect for background color changes */
+    color: var(--sidebar-tab-text-color); /* What it does: Sets the text color using the defined variable */
+    /* What it relies on: The --sidebar-tab-text-color variable defined in :root */
 }
 
 #sidebar ul li:hover {
-    background-color: var(--sidebar-hover);
+    background-color: var(--sidebar-hover); /* What it does: Changes the background color on hover using the defined variable */
+    /* What it relies on: The --sidebar-hover variable defined in :root */
 }
 
+/* Main content styles */
 #main-content {
-    margin-left: 250px;
-    padding: 20px;
-    background-color: var(--main-content-background);
+    margin-left: var(--sidebar-width); /* What it does: Adds a left margin to the main content to make room for the sidebar */
+    padding: 20px; /* What it does: Adds padding inside the main content area */
+    background-color: var(--main-content-background); /* What it does: Sets the background color using the defined variable */
+    min-height: 100vh; /* What it does: Ensures the main content takes up at least 100% of the viewport height */
+    max-width: var(--chat-max-width); /* What it does: Sets a maximum width for the main content area */
+    box-sizing: border-box; /* What it does: Includes padding and border in the element's total width and height */
+    /* What it relies on: The --sidebar-width, --main-content-background, and --chat-max-width variables defined in :root */
 }
 
-.tab {
-    display: none;
+/* Chat container */
+.chat-container {
+    display: flex; /* What it does: Uses flexbox for layout */
+    flex-direction: column; /* What it does: Arranges children in a column */
+    height: calc(100vh - 40px); /* What it does: Sets the height to the full viewport height minus 40px */
+    background: var(--chat-bg); /* What it does: Sets the background color using the defined variable */
+    border: var(--chat-border); /* What it does: Sets the border using the defined variable */
+    border-radius: var(--chat-border-radius); /* What it does: Sets the border radius using the defined variable */
+    margin: 0 auto; /* What it does: Centers the container horizontally */
+    padding: 0; /* What it does: Removes padding */
+    box-sizing: border-box; /* What it does: Includes padding and border in the element's total width and height */
+    position: relative; /* What it does: Positions the container relative to its normal position */
+    /* What it relies on: The --chat-bg, --chat-border, and --chat-border-radius variables defined in :root */
 }
 
-.tab.active {
-    display: block;
+/* Main chat container */
+.main-chat-container {
+    height: calc(100vh - 40px); /* What it does: Sets the height to the full viewport height minus 40px */
+    display: flex; /* What it does: Uses flexbox for layout */
+    flex-direction: column; /* What it does: Arranges children in a column */
+    position: relative; /* What it does: Positions the container relative to its normal position */
+    box-sizing: border-box; /* What it does: Includes padding and border in the element's total width and height */
 }
 
-.ai-space {
-    border: 1px solid #ccc;
-    padding: 20px;
-    margin-top: 20px;
-    background-color: #ecf0f1;
+/* Scrollable chat display */
+.chat-display {
+    flex: 1; /* What it does: Allows the chat display to grow and fill available space */
+    overflow-y: auto; /* What it does: Adds vertical scrolling if content overflows */
+    padding: 1rem; /* What it does: Adds padding inside the chat display */
+    background-color: #fafafa; /* What it does: Sets a light background color for the chat area */
+    border-bottom: 1px solid #ddd; /* What it does: Adds a bottom border */
 }
 
-document.documentElement.style.setProperty('--sidebar-background', '#your-color');
-document.documentElement.style.setProperty('--sidebar-hover', '#your-hover-color');
+/* Chat message bubbles */
+.chat-message {
+    display: inline-block; /* What it does: Displays the message as an inline block */
+    max-width: 60%; /* What it does: Sets a maximum width for the message bubbles */
+    margin: 0.5rem 0; /* What it does: Adds vertical margin to separate messages */
+    padding: 0.75rem 1rem; /* What it does: Adds padding inside the message bubbles */
+    border-radius: 10px; /* What it does: Rounds the corners of the message bubbles */
+    font-size: 0.95rem; /* What it does: Sets the font size */
+    line-height: 1.4; /* What it does: Sets the line height */
+}
+
+/* User messages (aligned right, distinct color) */
+.user-message {
+    background-color: #007BFF; /* What it does: Sets the background color for user messages */
+    color: #fff; /* What it does: Sets the text color for user messages */
+    margin-left: auto; /* What it does: Pushes the message to the right */
+    text-align: right; /* What it does: Aligns the text to the right */
+    display: block; /* What it does: Displays the message as a block element */
+}
+
+/* Incoming messages (aligned left, lighter color) */
+.incoming-message {
+    background-color: #e0e0e0; /* What it does: Sets the background color for incoming messages */
+    color: #333; /* What it does: Sets the text color for incoming messages */
+    margin-right: auto; /* What it does: Pushes the message to the left */
+}
+
+/* Chat input area */
+.chat-input-area {
+    display: flex; /* What it does: Uses flexbox for layout */
+    align-items: center; /* What it does: Aligns items vertically in the center */
+    padding: 0.5rem; /* What it does: Adds padding inside the input area */
+    background-color: #f0f0f0; /* What it does: Sets a light background color for the input area */
+    box-shadow: 0 -2px 5px rgba(0,0,0,0.1); /* What it does: Adds a shadow to the top of the input area */
+}
+
+/* Text input for chat */
+.chat-input {
+    flex: 1; /* What it does: Allows the input to grow and fill available space */
+    padding: 0.75rem; /* What it does: Adds padding inside the input */
+    margin-right: 0.5rem; /* What it does: Adds right margin to separate from the send button */
+    border: 1px solid #ccc; /* What it does: Adds a border around the input */
+    border-radius: 6px; /* What it does: Rounds the corners of the input */
+    font-size: 0.9rem; /* What it does: Sets the font size */
+    font-family: inherit; /* What it does: Inherits the font family from the parent */
+    box-sizing: border-box; /* What it does: Includes padding and border in the element's total width and height */
+}
+
+/* Send button */
+.chat-send-button {
+    padding: 0.7rem 1.2rem; /* What it does: Adds padding inside the button */
+    background-color: #007BFF; /* What it does: Sets the background color for the send button */
+    color: #fff; /* What it does: Sets the text color for the send button */
+    border: none; /* What it does: Removes the default border */
+    border-radius: 6px; /* What it does: Rounds the corners of the button */
+    cursor: pointer; /* What it does: Changes the cursor to a pointer when hovering over the button */
+    font-size: 0.9rem; /* What it does: Sets the font size */
+    transition: background 0.2s ease; /* What it does: Adds a smooth transition effect for background color changes */
+}
+
+.chat-send-button:hover {
+    background-color: #0056b3; /* What it does: Changes the background color on hover */
+}
