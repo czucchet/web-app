@@ -38,6 +38,10 @@ function renderContent(selectedTab) {
         contentArea.appendChild(chatContainer);
     } else if (selectedTab === 'page2') {
         contentArea.innerHTML = '<h1>Page 2</h1><p>This is the content for Page 2.</p>';
+    } else if (selectedTab === 'page3') {
+        contentArea.innerHTML = '<h1>Page 3</h1><p>This is the content for Page 3.</p>';
+    } else if (selectedTab === 'page4') {
+        contentArea.innerHTML = '<h1>Page 4</h1><p>This is the content for Page 4.</p>';
     }
 }
 

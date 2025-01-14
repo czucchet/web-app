@@ -12,8 +12,20 @@ function createSidebar() {
     tab2.innerText = 'Page 2';
     tab2.onclick = () => switchTab('page2');
 
+    const tab3 = document.createElement('li');
+    tab3.innerText = 'Page 3';
+    tab3.onclick = () => switchTab('page3');
+
+    const tab4 = document.createElement('li');
+    tab4.innerText = 'Page 4';
+    tab4.onclick = () => switchTab('page4');
+
+
     ul.appendChild(tab1);
     ul.appendChild(tab2);
+    ul.appendChild(tab3);
+    ul.appendChild(tab4);
+
     sidebar.appendChild(ul);
 
     return sidebar;
