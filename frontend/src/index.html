@@ -1,25 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- ...existing code... -->
     <title>Web Application</title>
     <link rel="stylesheet" href="styles/main.css">
+    <!-- ...existing code... -->
 </head>
 <body>
     <div id="app">
         <aside id="sidebar">
+            <!-- ...existing code... -->
             <ul>
                 <li id="tab1">Page 1</li>
                 <li id="tab2">Page 2</li>
             </ul>
+            <!-- ...existing code... -->
         </aside>
+
         <main id="main-content">
-            <div class="chat-container">
-                <div class="chat-display"></div>
+            <header class="chat-header" id="welcomeHeader">
+                <h2>How can I help you today?</h2>
+            </header>
+
+            <div class="chat-container collapsed">
+                <div class="chat-display hidden"></div>
                 <div class="chat-input-area">
                     <input type="text" class="chat-input" placeholder="Type your message...">
-                    <button class="chat-send-button">Send</button>
+                    <button class="chat-send-button" aria-label="Send message">Send</button>
                 </div>
             </div>
         </main>

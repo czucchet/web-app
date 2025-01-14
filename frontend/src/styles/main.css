@@ -1,18 +1,22 @@
-/* Root variables for consistent styling */
+/*====================================
+  ROOT VARIABLES
+====================================*/
+
 :root {
     --sidebar-width: 250px; /* Define sidebar width as a variable */
     --sidebar-background: rgba(240,243,248,255); /* Main sidebar color */
     --sidebar-hover: rgba(230,233,238,255); /* Hover color */
     --sidebar-startposition: 75px; /* Starting position of the sidebar */
-    --main-content-background: white; /* Main content background color */
     --sidebar-tab-text-color: #333333; /* Tab text color */
 
-    --chat-bg: #333333; /* chat background */
+    --main-content-background: white; /* Main content background color */
+
+    --chat-bg: white; /* chat background */
     --chat-border:rgba(240,243,248,255); /* Chat border color */
     --chat-border-radius: 10px; /* Chat border radius */
     --chat-max-width: 1800px; /* Chat max width */
     --chat-input-bg: #f0f0f0;           /* Background color for input area */
-    --chat-input-border: #ccc;          /* Border color for input field */
+    --chat-input-border: white;          /* Border color for input field */
     --chat-button-primary: #007BFF;     /* Primary button color */
     --chat-button-hover: #0056b3;       /* Button hover color */
     --chat-message-bg-user: #007BFF;    /* User message background */
@@ -21,12 +25,14 @@
     --chat-message-text-ai: #333;       /* AI message text color */
     --chat-shadow-color: rgba(0,0,0,0.1); /* Shadow color for containers */
     --chat-border-color: #ddd;          /* Border color for chat display */
+    --chat-container-width: 1000px;       /* Chat container width */ 
 }
 
 
-/* ///////////////////////////////////////////////////////////////////////////////////////////////////// */ 
+/*====================================
+  GLOBAL STYLES
+====================================*/
 
-/* Global styles */
 body {
     font-family: Arial, sans-serif;
     margin: 0;
@@ -40,7 +46,9 @@ body {
     width: 100%; /* Full width */
 }
 
-/*  /////////  START 1 Sidebar styles   ///////// */ 
+/*====================================
+  SIDEBAR
+====================================*/
 
 #sidebar {
     width: var(--sidebar-width); /* What it does: Sets the sidebar width using the defined variable */
@@ -78,37 +86,37 @@ body {
     /* What it relies on: The --sidebar-hover variable defined in :root */
 }
 
-/*  ///////////////////////////////////////////// */ 
+/*====================================
+  MAIN CONTENT
+====================================*/
 
-
-/*  /////////  START 2 Main Content   ///////// */ 
-
-/* Main content styles */
 #main-content {
+    padding-top: 120px; /* What it does: Adds padding to the top of the main content area */
     margin-left: var(--sidebar-width); /* What it does: Adds a left margin to the main content to make room for the sidebar */
-    padding: 20px; /* What it does: Adds padding inside the main content area */
     background-color: var(--main-content-background); /* What it does: Sets the background color using the defined variable */
     min-height: 100vh; /* What it does: Ensures the main content takes up at least 100% of the viewport height */
     max-width: var(--chat-max-width); /* What it does: Sets a maximum width for the main content area */
     box-sizing: border-box; /* What it does: Includes padding and border in the element's total width and height */
+    align-items: center;
     /* What it relies on: The --sidebar-width, --main-content-background, and --chat-max-width variables defined in :root */
 }
 
-/* Chat container */
-.chat-container {
-    display: flex; /* What it does: Uses flexbox for layout */
-    flex-direction: column; /* What it does: Arranges children in a column */
-    height: calc(100vh - 40px); /* What it does: Sets the height to the full viewport height minus 40px */
-    background: var(--chat-bg); /* What it does: Sets the background color using the defined variable */
-    border: var(--chat-border); /* What it does: Sets the border using the defined variable */
-    border-radius: var(--chat-border-radius); /* What it does: Sets the border radius using the defined variable */
-    margin: 0 auto; /* What it does: Centers the container horizontally */
-    padding: 0; /* What it does: Removes padding */
-    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-    box-sizing: border-box; /* What it does: Includes padding and border in the element's total width and height */
-    position: relative; /* What it does: Positions the container relative to its normal position */
-    /* What it relies on: The --chat-bg, --chat-border, and --chat-border-radius variables defined in :root */
+
+/*====================================
+  CHAT HEADER
+====================================*/
+
+.chat-header {
+    text-align: center;
+    width: 100%;
+    max-width: 600px;
+    max-height: 50px;
 }
+
+/*====================================
+  CHAT CONTAINER
+====================================*/
+
 
 /* Main chat container */
 .main-chat-container {
@@ -123,8 +131,7 @@ body {
 .chat-display {
     flex: 1; /* What it does: Allows the chat display to grow and fill available space */
     overflow-y: auto; /* What it does: Adds vertical scrolling if content overflows */
-    padding: 1rem; /* What it does: Adds padding inside the chat display */
-    background-color: #fafafa; /* What it does: Sets a light background color for the chat area */
+    background-color: white; /* What it does: Sets a light background color for the chat area */
     border-bottom: 1px solid #ddd; /* What it does: Adds a bottom border */
 }
 
@@ -194,15 +201,80 @@ body {
     background-color: #0056b3; /* What it does: Changes the background color on hover */
 }
 
-/*  /////////  UPLOAD SECTION   ///////// */ 
 
-/* Upload button with tooltip */
-.upload-button {
-    padding: 0.7rem;    /* What it does: Adds padding inside the button */
-    background: transparent; /* What it does: Sets the background color for the upload button */         
-    border: 1px solid #ddd;  /* What it does: Adds a border around the upload button */
-    border-radius: 6px; /* What it does: Rounds the corners of the button */   
-    cursor: pointer; /* What it does: Changes the cursor to a pointer when hovering over the button */    
-    position: relative; /* What it does: Positions the button relative to its normal position */
+
+
+
+
+
+
+
+/* A contrasting color for the send button to emphasize the action (e.g., red) */
+.chat-send-button {
+    background-color: #blue; /* Emphasized color (red) */
+    color: #fff;
+    border: none;
+    padding: 0.7rem 1rem;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
 }
 
+/* On hover, darken the send button */
+.chat-send-button:hover {
+    background-color: #blue;
+}
+
+/* Make sure the chat is centered and has balanced whitespace */
+#main-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Adjust the chat-container margins for a clean, centered layout */
+.chat-container {
+    width: 100%;
+    max-width: var(--chat-container-width); /* Narrower width for a modern, focused design */
+    margin: 20px auto;
+    height: calc(100vh - 800px); /* Leave space for header & footer if needed */
+    background: var(--chat-bg);
+    border-radius: var(--chat-border-radius);
+    border-radius: var(--chat-border-radius);
+    overflow: hidden; /* Ensures child elements respect container's rounded corners */
+}
+
+/* Responsive behavior */
+@media (max-width: 768px) {
+    .chat-container {
+        max-width: 90%;
+        height: auto;
+    }
+    .chat-header {
+        font-size: 1rem;
+    }
+}
+
+.chat-container.collapsed {
+    min-height: auto;
+    height: auto;
+    width: 100%;
+}
+
+.chat-display.hidden {
+    display: none;
+    height: 0;
+    padding: 0;
+    margin: 0;
+}
+
+.chat-header {
+    margin: 0;
+    padding: 1rem;
+}
+
+.chat-input-area {
+    margin: 0;
+    padding: 1rem;
+    border-top: none;
+}
