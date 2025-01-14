@@ -4,8 +4,23 @@
     --sidebar-background: rgba(240,243,248,255); /* Main sidebar color */
     --sidebar-hover: rgba(230,233,238,255); /* Hover color */
     --sidebar-startposition: 75px; /* Starting position of the sidebar */
-    --main-content-background: rgba(240,243,248,255); /* Main content background color */
+    --main-content-background: white; /* Main content background color */
     --sidebar-tab-text-color: #333333; /* Tab text color */
+
+    --chat-bg: #333333; /* chat background */
+    --chat-border:rgba(240,243,248,255); /* Chat border color */
+    --chat-border-radius: 10px; /* Chat border radius */
+    --chat-max-width: 1800px; /* Chat max width */
+    --chat-input-bg: #f0f0f0;           /* Background color for input area */
+    --chat-input-border: #ccc;          /* Border color for input field */
+    --chat-button-primary: #007BFF;     /* Primary button color */
+    --chat-button-hover: #0056b3;       /* Button hover color */
+    --chat-message-bg-user: #007BFF;    /* User message background */
+    --chat-message-bg-ai: #e0e0e0;      /* AI message background */
+    --chat-message-text-user: #fff;     /* User message text color */
+    --chat-message-text-ai: #333;       /* AI message text color */
+    --chat-shadow-color: rgba(0,0,0,0.1); /* Shadow color for containers */
+    --chat-border-color: #ddd;          /* Border color for chat display */
 }
 
 
@@ -16,9 +31,17 @@ body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
+    background-color: #f0f0f0;
+    width: 100%; /* Full width */
+
 }
 
-/* Sidebar styles */
+#app {
+    width: 100%; /* Full width */
+}
+
+/*  /////////  START 1 Sidebar styles   ///////// */ 
+
 #sidebar {
     width: var(--sidebar-width); /* What it does: Sets the sidebar width using the defined variable */
     background-color: var(--sidebar-background); /* What it does: Sets the sidebar background color using the defined variable */
@@ -55,6 +78,11 @@ body {
     /* What it relies on: The --sidebar-hover variable defined in :root */
 }
 
+/*  ///////////////////////////////////////////// */ 
+
+
+/*  /////////  START 2 Main Content   ///////// */ 
+
 /* Main content styles */
 #main-content {
     margin-left: var(--sidebar-width); /* What it does: Adds a left margin to the main content to make room for the sidebar */
@@ -76,6 +104,7 @@ body {
     border-radius: var(--chat-border-radius); /* What it does: Sets the border radius using the defined variable */
     margin: 0 auto; /* What it does: Centers the container horizontally */
     padding: 0; /* What it does: Removes padding */
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
     box-sizing: border-box; /* What it does: Includes padding and border in the element's total width and height */
     position: relative; /* What it does: Positions the container relative to its normal position */
     /* What it relies on: The --chat-bg, --chat-border, and --chat-border-radius variables defined in :root */
@@ -131,8 +160,10 @@ body {
     display: flex; /* What it does: Uses flexbox for layout */
     align-items: center; /* What it does: Aligns items vertically in the center */
     padding: 0.5rem; /* What it does: Adds padding inside the input area */
-    background-color: #f0f0f0; /* What it does: Sets a light background color for the input area */
+    gap: 10px;  /* What it does: Adds a gap between the input and the send button */
+    background-color: var(--chat-input-bg); /* What it does: Sets a light background color for the input area */
     box-shadow: 0 -2px 5px rgba(0,0,0,0.1); /* What it does: Adds a shadow to the top of the input area */
+    border-radius: 0 0 12px 12px; /* What it does: Rounds the bottom corners of the input area */
 }
 
 /* Text input for chat */
@@ -162,3 +193,16 @@ body {
 .chat-send-button:hover {
     background-color: #0056b3; /* What it does: Changes the background color on hover */
 }
+
+/*  /////////  UPLOAD SECTION   ///////// */ 
+
+/* Upload button with tooltip */
+.upload-button {
+    padding: 0.7rem;    /* What it does: Adds padding inside the button */
+    background: transparent; /* What it does: Sets the background color for the upload button */         
+    border: 1px solid #ddd;  /* What it does: Adds a border around the upload button */
+    border-radius: 6px; /* What it does: Rounds the corners of the button */   
+    cursor: pointer; /* What it does: Changes the cursor to a pointer when hovering over the button */    
+    position: relative; /* What it does: Positions the button relative to its normal position */
+}
+

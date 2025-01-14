@@ -18,3 +18,5 @@ function createSidebar() {
 
     return sidebar;
 }
+
+export default createSidebar;
