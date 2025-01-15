@@ -14,4 +14,6 @@ router.get('/ai', async (req, res) => {
     }
 });
 
+router.post('/chat', generateChatResponse);
+
 module.exports = router;
