@@ -15,11 +15,13 @@ async function testOpenAIConnection() {
         const response = await openai.chat.completions.create({
             model: "gpt-3.5-turbo",
             messages: [{ role: "user", content: "Hello" }],
-            max_tokens: 5
+            max_tokens: 100
         });
 
-        if (response.data.choices[0].message) {
+        // Updated to match new SDK response structure
+        if (response.choices[0].message) {
             console.log('✅ OpenAI API connection successful');
+            console.log('Response:', response.choices[0].message);
             return true;
         }
     } catch (error) {
