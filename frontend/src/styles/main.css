@@ -68,7 +68,6 @@ body {
 }
 
 
-
 /* Sidebar list styles */
 #sidebar ul {
     list-style-type: none; /* What it does: Removes the default list styling */
@@ -92,9 +91,21 @@ body {
 }
 
 /* Active tab styling */
-.active-tab {
-    background-color: var(--sidebar-active-tab-background-color); /* Highlights the active tab with a white background */
-    color: var(--sidebar-active-tab-font); /* Optional: Change text color for better contrast */
+#sidebar ul li.active-tab {
+    background-color: white !important; /* Use !important to ensure it overrides other styles */
+    color: black !important;           
+    position: relative;
+}
+
+/* Add highlight effect */
+#sidebar ul li.active-tab::after {
+    content: '';
+    position: absolute;
+    right: 0;
+    top: 0;
+    height: 100%;
+    width: 4px;
+    background-color: var(--chat-button-primary);
 }
 
 /*====================================
@@ -213,28 +224,6 @@ body {
 }
 
 
-
-
-
-
-
-
-
-/* A contrasting color for the send button to emphasize the action (e.g., red) */
-.chat-send-button {
-    background-color: #blue; /* Emphasized color (red) */
-    color: #fff;
-    border: none;
-    padding: 0.7rem 1rem;
-    font-size: 1rem;
-    cursor: pointer;
-    transition: background-color 0.2s ease;
-}
-
-/* On hover, darken the send button */
-.chat-send-button:hover {
-    background-color: #blue;
-}
 
 /* Make sure the chat is centered and has balanced whitespace */
 #main-content {

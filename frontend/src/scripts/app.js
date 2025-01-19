@@ -3,8 +3,7 @@ import renderContent from '../components/content.js';
 
 document.addEventListener('DOMContentLoaded', () => {
     // Initialize sidebar
-    const sidebarContainer = document.getElementById('sidebar');
-    sidebarContainer.appendChild(createSidebar());
+    createSidebar(); // Directly call to modify the DOM
     
     // Initialize content
     renderContent('page1');
