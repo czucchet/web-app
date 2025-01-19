@@ -9,10 +9,11 @@
     "build": "echo 'Build process here'"
   },
   "dependencies": {
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "openai": "^4.79.1"
   },
   "devDependencies": {
-    "live-server": "^1.2.1"
+    "live-server": "^1.2.0"
   },
   "author": "",
   "license": "ISC"

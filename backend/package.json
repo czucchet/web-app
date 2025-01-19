@@ -3,13 +3,13 @@
   "version": "1.0.0",
   "main": "src/server.js",
   "dependencies": {
-    "express": "^4.17.1",
     "body-parser": "^1.19.0",
-    "openai": "^4.0.0",
-    "dotenv": "^16.0.0"
+    "dotenv": "^16.0.0",
+    "express": "^4.17.1",
+    "openai": "^4.79.1"
   },
   "scripts": {
-    "start": "node src/server.js",
-    "test": "node test/openaitestconnection.js"
+    "start": "node --no-deprecation src/server.js",
+    "test": "node --no-deprecation test/apicheck.js"
   }
 }

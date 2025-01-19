@@ -1,6 +1,10 @@
+
+const dotenv = require('dotenv');
 const express = require('express');
 const bodyParser = require('body-parser');
-const apiRoutes = require('./routes/api');
+const apiRoutes = require('./routes/api'); // Drop the .js extensio
+
+dotenv.config(); // Loads environment variables
 
 const app = express();
 const PORT = process.env.PORT || 3000;

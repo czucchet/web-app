@@ -9,6 +9,9 @@
     --sidebar-startposition: 75px; /* Starting position of the sidebar */
     --sidebar-tab-text-color: #333333; /* Tab text color */
 
+    --sidebar-active-tab-background-color: white; /* Highlights the active tab with a white background */
+    --sidebar-active-tab-font: black    ; /* Change text color for better contrast */
+
     --main-content-background: white; /* Main content background color */
 
     --chat-bg: white; /* chat background */
@@ -86,6 +89,12 @@ body {
 #sidebar ul li:hover {
     background-color: var(--sidebar-hover); /* What it does: Changes the background color on hover using the defined variable */
     /* What it relies on: The --sidebar-hover variable defined in :root */
+}
+
+/* Active tab styling */
+.active-tab {
+    background-color: var(--sidebar-active-tab-background-color); /* Highlights the active tab with a white background */
+    color: var(--sidebar-active-tab-font); /* Optional: Change text color for better contrast */
 }
 
 /*====================================
