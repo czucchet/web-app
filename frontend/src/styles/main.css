@@ -116,7 +116,7 @@ body {
     padding-top: 120px; /* What it does: Adds padding to the top of the main content area */
     margin-left: var(--sidebar-width); /* What it does: Adds a left margin to the main content to make room for the sidebar */
     background-color: var(--main-content-background); /* What it does: Sets the background color using the defined variable */
-    min-height: 100vh; /* What it does: Ensures the main content takes up at least 100% of the viewport height */
+    min-height: 200vh; /* What it does: Ensures the main content takes up at least 100% of the viewport height */
     max-width: var(--chat-max-width); /* What it does: Sets a maximum width for the main content area */
     box-sizing: border-box; /* What it does: Includes padding and border in the element's total width and height */
     align-items: center;
@@ -235,14 +235,18 @@ body {
 /* Adjust the chat-container margins for a clean, centered layout */
 .chat-container {
     width: 100%;
-    max-width: var(--chat-container-width); /* Narrower width for a modern, focused design */
+    max-width: var(--chat-container-width);
     margin: 20px auto;
-    height: calc(100vh - 800px); /* Leave space for header & footer if needed */
+    min-height: 400px;
     background: var(--chat-bg);
     border-radius: var(--chat-border-radius);
-    border-radius: var(--chat-border-radius);
-    overflow: hidden; /* Ensures child elements respect container's rounded corners */
+    box-shadow: 0 4px 8px var(--chat-shadow-color);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
 }
+
+
 
 /* Responsive behavior */
 @media (max-width: 768px) {
