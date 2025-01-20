@@ -68,46 +68,64 @@ function createChatContainer() {
 
 }
 
+// Update error handling in sendMessage function
 async function sendMessage(message, chatDisplay) {
-    if (!message.trim()) return; // Ignore empty messages
-
-    // Display the user's message
-    const userMessage = document.createElement('div');
-    userMessage.className = 'chat-message user-message';
-    userMessage.innerText = message;
-    chatDisplay.appendChild(userMessage);
-
-    // Clear input field
-    document.querySelector('.chat-input').value = '';
+    if (!message.trim()) return;
 
     try {
-        // Send message to backend
+        // Show loading state
+        const loadingMessage = document.createElement('div');
+        loadingMessage.className = 'chat-message loading-message';
+        loadingMessage.innerText = 'Loading...';
+        chatDisplay.appendChild(loadingMessage);
+
         const response = await sendMessageToBackend(message);
+        
+        // Remove loading message
+        loadingMessage.remove();
+
         // Display AI's response
         const aiMessage = document.createElement('div');
         aiMessage.className = 'chat-message incoming-message';
         aiMessage.innerText = response.message;
         chatDisplay.appendChild(aiMessage);
 
-        // Update chat state
         handleNewMessage(message);
     } catch (error) {
-        console.error('Error sending message:', error);
+        // Handle error state
+        const errorMessage = document.createElement('div');
+        errorMessage.className = 'chat-message error-message';
+        errorMessage.innerText = 'Error: Could not send message. Please try again.';
+        chatDisplay.appendChild(errorMessage);
+        console.error('Error:', error);
     }
 }
 
-function sendMessageToBackend(message) {
-    return fetch('http://localhost:3000/api/chat', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ message })
-    })
-    .then(response => {
+async function sendMessageToBackend(message) {
+    try {
+        const response = await fetch('http://localhost:3000/api/chat', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            mode: 'cors',
+            credentials: 'same-origin', // Changed from 'include' to 'same-origin'
+            body: JSON.stringify({ message })
+        });
+
         if (!response.ok) {
-            throw new Error('Network response was not ok');
+            const errorData = await response.json();
+            throw new Error(errorData.error || `HTTP error! status: ${response.status}`);
         }
-        return response.json();
-    });
+        
+        const data = await response.json();
+        return {
+            message: data.choices?.[0]?.message?.content || 'No response from AI'
+        };
+    } catch (error) {
+        console.error('Error sending message:', error);
+        throw new Error('Failed to send message. Please try again.');
+    }
 }
 
 function updateHeader() {

@@ -1,0 +1,5 @@
+
+Requirement 1: 
+    Description: Move header in chat interface outside of chat container
+    Priority: Medium
+
